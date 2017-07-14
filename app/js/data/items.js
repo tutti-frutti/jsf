@@ -1,6 +1,6 @@
 var items = [
     {
-        "item-name": "first",
+        "name": "first",
         "sku": 12345,
         "Height": 13,
         "price": 100,
@@ -8,7 +8,7 @@ var items = [
     },
     
     {
-        "item-name": "second",
+        "name": "second",
         "sku": 54321,
         "Height": 18,
         "price": 130,
@@ -16,7 +16,7 @@ var items = [
     },
     
     {
-        "item-name": "third",
+        "name": "third",
         "sku": 11122,
         "Height": 8,
         "price": 80,
@@ -24,7 +24,7 @@ var items = [
     },
     
     {
-        "item-name": "fourth",
+        "name": "fourth",
         "sku": 33115,
         "Height": 10,
         "price": 150,
@@ -32,7 +32,7 @@ var items = [
     },
     
     {
-        "item-name": "fifth",
+        "name": "fifth",
         "sku": 99885,
         "Height": 19,
         "price": 170,
