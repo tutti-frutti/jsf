@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/libs.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Slider</title>
+    <style>
+        .slider {
+            margin: 30px auto;
+            max-width: 500px;
+            height: 250px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header></header>
+
+    <main>
+
+        <div class="slider">
+            <img src="img/slides/slide-1.jpg" alt="" class="mySlide">
+            <img src="img/slides/slide-2.jpg" alt="" class="mySlide">
+            <img src="img/slides/slide-3.jpg" alt="" class="mySlide">
+        </div>
+
+    </main>
+
+    <footer></footer>
+
+    <script src="js/libs.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        var slideIndex = 0;
+        carousel();
+        
+        function carousel () {
+            var i;
+            var x = document.getElementsByClassName('mySlide');
+            for(i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            
+            slideIndex++;
+            if(slideIndex > x.length) {
+                slideIndex = 1;
+            }
+            x[slideIndex - 1].style.display = "block";
+            setTimeout(carousel, 2000);
+        }
+    </script>
+
+</body>
+
+</html>

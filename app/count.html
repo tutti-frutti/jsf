@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/libs.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Counter animation</title>
+
+    <style>
+        .first {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            margin-bottom: 100px;
+            height: 100vh;
+        }
+        
+        .first .wrapper {
+            margin: auto;
+        }
+        
+        .input-block {
+            position: relative;
+        }
+        
+        .input-block .btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        
+        .input-block .btn-plus {
+            top: 0;
+        }
+        
+        .input-block .btn-minus {
+            top: auto;
+            bottom: 0;
+        }
+        
+        .input {
+            padding: 20px;
+            height: 60px;
+            width: 100px;
+            font-size: 22px;
+        }
+        
+        .buttons .btn {
+            padding: 0;
+            height: 30px;
+            line-height: 30px;
+            width: 40px;
+            border-radius: 0;
+            border: 1px solid transparent;
+            color: #fff;
+            background: gray;
+            transition: all .3s;
+        }
+        
+        .buttons .btn:hover {
+            border: 1px solid rgba(0, 0, 0, .3);
+            background: #99b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header></header>
+
+    <main>
+
+        <div class="first">
+            <div class="wrapper">
+                <div class="input-block">
+                    <input type="text" value="1" class="input" id="ammount">
+                    <div class="buttons">
+                        <button class="btn btn-plus">+</button>
+                        <button class="btn btn-minus">-</button>
+                    </div>
+                </div>
+
+                <div class="price-block">
+                    <span class="current-price">150</span>
+                    <span class="current-sum"></span>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer></footer>
+
+    <script src="js/libs.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        $(document).ready(function () {
+            var first = $('#ammount').val();
+            var currentPrice = $('.current-price').html();
+            var currentSum = $('.current-sum').html(currentPrice);
+
+            $('.btn-plus').click(function () {
+                var inputInitialValue = $('#ammount').val();
+                inputInitialValue++;
+                $('#ammount').val(inputInitialValue);
+                var sum = currentPrice * inputInitialValue;
+                $(currentSum).html(sum);
+            });
+            $('.btn-minus').click(function () {
+                var inputInitialValue = $('#ammount').val();
+                inputInitialValue--;
+                $('#ammount').val(inputInitialValue);
+                var sum = currentPrice * inputInitialValue;
+                $(currentSum).html(sum);
+                if (inputInitialValue < 1) {
+                    $('#ammount').val(first);
+                }
+            });
+            
+            
+
+
+            //            function up() {
+            //                $(plus).click(function () {
+            //                    var inputInitialValue = $('#ammount').val();
+            //                    inputInitialValue++ ;
+            //                    $('#ammount').val(inputInitialValue);
+            //                    $(currentPrice)*inputInitialValue;
+            //                });
+            //            };
+            //            function down(){
+            //                $(minus).click(function(){
+            //                    var inputInitialValue = $('#ammount').val();
+            //                    inputInitialValue-- ;
+            //                    $('#ammount').val(inputInitialValue);
+            //                    if(inputInitialValue < 1) {
+            //                        $('#ammount').val(first);
+            //                    }
+            //                });
+            //            };
+            //            up();
+            //            down();
+
+            // price change
+            //            var currentPrice = $('.current-price');
+
+
+            // add currency sign
+
+        });
+    </script>
+</body>
+
+</html>

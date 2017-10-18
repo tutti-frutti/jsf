@@ -1,4 +1,4 @@
-var items = [
+[
     {
         "name": "first",
         "sku": 12345,

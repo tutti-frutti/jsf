@@ -18,13 +18,77 @@
     </header>
 
     <main>
-
     </main>
 
     <footer></footer>
 
     <script src="js/libs.min.js"></script>
     <script src="js/common.js"></script>
+    <script>
+        //Setup
+        var contacts = [
+            { 
+                "firstName": "Akira",
+                "lastName": "Laine",
+                "number": "0543236543",
+                "likes": ["Pizza", "Coding", "Brownie Points"]
+    },
+            {
+                "firstName": "Harry",
+                "lastName": "Potter",
+                "number": "0994372684",
+                "likes": ["Hogwarts", "Magic", "Hagrid"]
+    },
+            {
+                "firstName": "Sherlock",
+                "lastName": "Holmes",
+                "number": "0487345643",
+                "likes": ["Intriguing Cases", "Violin"]
+    },
+            {
+                "firstName": "Kristian",
+                "lastName": "Vos",
+                "number": "unknown",
+                "likjes": ["Javascript", "Gaming", "Foxes"]
+    }
+];
+        console.log(contacts);
+
+
+        function lookUpProfile(firstName, prop) {
+            // Only change code below this line
+            var name;
+            var output;
+            // 1st variant 
+            //            for (var i = 0; i < contacts.length; i++) {
+            //                if(contacts[i].firstName == firstName && contacts[i].hasOwnProperty(prop)) {
+            //                    output = contacts[i][prop];
+            //                    return output;
+            //                } else if (contacts[i].firstName != firstName) {
+            //                    output = "No such contact";
+            //                } else if (!contacts[i].hasOwnProperty(prop) ) {
+            //                    output = "No such property";
+            //                }
+            //                console.log(output);
+            //            }
+            // correct variant
+            for (var x = 0; x < contacts.length; x++) {
+                if (contacts[x].firstName === firstName) {
+                    if (contacts[x].hasOwnProperty(prop)) {
+                        return contacts[x][prop];
+                    } else {
+                        return "No such property";
+                    }
+                }
+            }
+            return "No such contact";
+
+        }
+
+        // Change these values to test your function
+        console.log(lookUpProfile("Kristian", "likjes"));
+        lookUpProfile("Kristian", "likjes");
+    </script>
 </body>
 
 </html>

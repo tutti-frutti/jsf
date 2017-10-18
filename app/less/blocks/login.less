@@ -1,0 +1,62 @@
+.login {
+    position: fixed;
+    top: 50%;
+    right: -400px;
+    transition: .5s;
+    &.show {
+        right: 0;
+    }
+    &__icons {
+        .dib(top);
+        width: 25px;
+    }
+    &__block {
+        .dib(top); 
+        width: 400px;
+        height: 300px;
+        background: gray;
+    }
+    &__content {
+        display: none;
+        padding: 20px;
+        height: 100%;
+        &.display {
+            display: block;
+        }
+        &._coral {
+        background: coral;
+        }
+        &._orange {
+        background: orange;
+            
+        }
+        &._green {
+        background: green;
+        }
+    }
+    &__enter,
+    &__registration {
+        input,
+        button {
+            margin: 5px 0;
+            width: 100%;
+        }
+    }
+}
+
+.btn-blue, .btn-yellow, .btn-green {
+    display: block;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    text-transform: uppercase;
+    color: #fff;
+    background: blue;
+}
+.btn-yellow {
+    background: yellow;
+}
+.btn-green {
+    background: green;
+}
