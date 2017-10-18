@@ -17,7 +17,7 @@
             height: 300px;
             background: url(../img/bg-anim.jpeg) 0 0 no-repeat;
         }
-        
+
         .bg-block p {
             position: relative;
             display: inline-block;
@@ -40,7 +40,7 @@
         <div class="bg-block">
             <p>Animated background</p>
         </div>
-            <a href="https://www.youtube.com/watch?v=HorbxXIYlCc">Видеоурок</a>
+        <a href="https://www.youtube.com/watch?v=HorbxXIYlCc">Видеоурок</a>
         <!--./bg-block-->
 
     </main>
@@ -50,7 +50,7 @@
     <script src="js/libs.min.js"></script>
     <script src="js/common.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var x = 0;
             var y = 0;
@@ -58,7 +58,7 @@
 
             bgBlock.css('backgroundPosition', x + 'px' + ' ' + y + 'px');
 
-            var animateGoStop = window.setInterval(function () {
+            var animateGoStop = window.setInterval(function() {
                 bgBlock.css('backgroundPosition', x + 'px' + ' ' + y + 'px');
                 if (y < -300) {
                     window.clearInterval(animateGoStop);
@@ -67,7 +67,7 @@
             }, 90);
         });
 
-        
+
         // BG BOTTOM-TOP
 
         //        $(document).ready(function () {
