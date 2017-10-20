@@ -12,7 +12,6 @@ function getListData() {
     xhr.open('GET', 'js/data/data-items.json');
     xhr.timeout = 10000;
     xhr.onload = function (evt) {
-        console.log(evt);
         var rawData = evt.target.response;
         var loadedData = JSON.parse(rawData);
         renderItems(loadedData);
@@ -34,7 +33,6 @@ function renderItems(loadedData) {
         })
         container.innerHTML = '';
         filtered.forEach(function (item) {
-            console.log(item)
             var element = getFromTemplate(item);
             container.appendChild(element);
         })

@@ -1,0 +1,36 @@
+[
+    {
+        "name": "first",
+        "article": 12345,
+        "colors": "red",
+        "price": 100
+    },
+    
+    {
+        "name": "second",
+        "article": 33333,
+        "colors": "white",
+        "price": 10
+    },
+    
+    {
+        "name": "third",
+        "article": 123,
+        "colors": "blue",
+        "price": 110
+    },
+    
+    {
+        "name": "fourth",
+        "article": 345,
+        "colors": "green",
+        "price": 100
+    },
+    
+    {
+        "name": "fifth",
+        "article": 52377,
+        "colors": "orange",
+        "price": 300
+    }
+]
