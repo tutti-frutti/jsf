@@ -8,9 +8,14 @@
     <link rel="stylesheet" href="css/libs.min.css">
     <link rel="stylesheet" href="css/main.css">
 
-    <title>Ajax</title>
+    <title>Selects</title>
 
     <style>
+        .select {
+            display: inline-block;
+            vertical-align: top;
+            width: 30%;
+        }
     </style>
 </head>
 
@@ -20,14 +25,32 @@
 
     <main class="center">
         <div class="select">
-            <label for="select-choice">Выбираем параметры</label>
+            <label for="select-choice">Тип</label>
             <select name="" id="select-choice">
                 <option value="select-option">Выбрать</option>
-                <option value="first">Вариант-1</option>
-                <option value="second">Вариант-2</option>
-                <option value="third">Вариант-3</option>
-                <option value="fourth">Вариант-4</option>
-                <option value="fifth">Вариант-5</option>
+                <option value="sneakers">Кроссовки</option>
+                <option value="jackets">Куртки</option>
+                <option value="t-shirt">Футболки</option>
+                <option value="fourth">Футболки</option>
+                <option value="fifth">Пояса</option>
+            </select>
+            <div class="select-choice-results"></div>
+        </div>
+        <!--select-->
+
+        <div class="select">
+            <label for="select-brand">Бренд</label>
+            <select name="" id="select-brand">
+                <option value="zero">Выбрать бренд</option>
+            </select>
+            <div class="select-choice-results"></div>
+        </div>
+        <!--select-->
+
+        <div class="select">
+            <label for="select-model">Модель</label>
+            <select name="" id="select-model">
+                <option value="zero">Выбрать модель</option>
             </select>
             <div class="select-choice-results"></div>
         </div>
@@ -37,7 +60,7 @@
             <section>
                <div class="template-block">
                     <span>Item name:</span>
-                    <span class="Item name">Item name</span>
+                    <span class="item-name">Item name</span>
                 </div>
                 
                 <div class="template-block">
@@ -47,7 +70,7 @@
                 
                 <div class="template-block">
                     <span>Color:</span>
-                    <span class="color"></span>
+                    <span class="colors"></span>
                 </div>
                 
                 <div class="template-block">
@@ -63,57 +86,51 @@
     <script src="js/libs.min.js"></script>
     <script src="js/common.js"></script>
     <script>
-        var container = document.getElementsByClassName('select-choice-results');
+        var container = document.querySelector('.select-choice-results');
 
-        //                function getDataSelect() {
-        //                    var xhr = new XMLHttpRequest();
-        //                    xhr.open('GET', 'js/data/select.json');
-        //                    xhr.onload = function(evt) {
-        //                        var rawData = evt.target.response;
-        //                        var loadedSelects = JSON.parse(rawData);
-        //                        console.log(loadedSelects);
-        //                    }
-        //                    xhr.send();
-        //                };
-        //
-        //                getDataSelect();
-
-        $.ajax({
-            type: 'GET',
-            url: 'js/data/select.json',
-            dataType: 'json',
-            success: function(data) {
-                var loaded = data;
-                renderItems(loaded);
-            },
-            onerror: function() {
-                console.log('cannot get data')
-            }
+        $('#select-choice').change(function() {
+            var brands = $(this).val();
+            console.log(brands);
+            $.ajax({
+                type: 'GET',
+                url: 'js/data/select.json',
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data[brands]);
+                    $('#select-brand').empty();
+                    $('#select-brand').append('<option value="">Выбрать</option>');
+                    for (var i in data[brands]) {
+                        $('#select-brand').append('<option value="' + data[brands][i].name + '">' + data[brands][i].name + '</option>');
+                    }
+                },
+                error: function() {
+                    console.log('cannot get data')
+                }
+            });
         });
 
         function renderItems(loaded) {
             var select = $('#select-choice');
             $(select).change(function() {
                 var options = select.val();
-                console.log(options);
                 var filtered = loaded.filter(function(items, i) {
                     var name = loaded[i].name;
                     if (name == options) {
                         return loaded[i].name;
                     }
-                    console.log(name);
-                    container.innerHTML = '';
-                    filtered.forEach(function(item) {
-                        var element = getFromTemplate(item);
-                        container.appendChild(element);
-                    });
                 })
+                container.innerHTML = '';
+                filtered.forEach(function(item) {
+                    var element = getFromTemplate(item);
+                    container.appendChild(element);
+                });
+
             })
         }
 
         function getFromTemplate(data) {
             var template = document.getElementById('template-select');
-            var element = template.content.children[0].clone(true);
+            var element = template.content.children[0].cloneNode(true);
 
             element.querySelector('.item-name').textContent = data.name;
             element.querySelector('.article').textContent = data.sku;
