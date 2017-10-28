@@ -11,6 +11,7 @@
     <title>Ajax</title>
 
     <style>
+
     </style>
 </head>
 
@@ -35,21 +36,21 @@
 
         <template id="template-select">
             <section>
-               <div class="template-block">
+                <div class="template-block">
                     <span>Item name:</span>
-                    <span class="Item name">Item name</span>
+                    <span class="item-name">Item name</span>
                 </div>
-                
+
                 <div class="template-block">
                     <span>Article:</span>
                     <span class="article"></span>
                 </div>
-                
+
                 <div class="template-block">
                     <span>Color:</span>
                     <span class="color"></span>
                 </div>
-                
+
                 <div class="template-block">
                     <span>Price:</span>
                     <span class="price"></span>
@@ -82,42 +83,44 @@
             type: 'GET',
             url: 'js/data/select.json',
             dataType: 'json',
-            success: function(data) {
+            success: function (data) {
                 var loaded = data;
                 renderItems(loaded);
             },
-            onerror: function() {
+            onerror: function () {
                 console.log('cannot get data')
             }
         });
 
         function renderItems(loaded) {
             var select = $('#select-choice');
-            $(select).change(function() {
+            $(select).change(function () {
                 var options = select.val();
-                console.log(options);
-                var filtered = loaded.filter(function(items, i) {
+                var filtered = loaded.filter(function (items, i, loaded) {
                     var name = loaded[i].name;
                     if (name == options) {
                         return loaded[i].name;
                     }
-                    console.log(name);
-                    container.innerHTML = '';
-                    filtered.forEach(function(item) {
-                        var element = getFromTemplate(item);
-                        container.appendChild(element);
-                    });
                 })
+                container.innerHTML = '';
+                filtered.forEach(function (item) {
+                    var element = getFromTemplate(item);
+                    console.log(element);
+                    container.appendChild(element);
+                });
+
             })
         }
 
         function getFromTemplate(data) {
             var template = document.getElementById('template-select');
-            var element = template.content.children[0].clone(true);
-
+//            console.log(template);
+            var element = template.content.children[0].cloneNode(true);
+//            console.log(element);
+            
             element.querySelector('.item-name').textContent = data.name;
-            element.querySelector('.article').textContent = data.sku;
-            element.querySelector('.colors').textContent = data.colors;
+            element.querySelector('.article').textContent = data.article;
+            element.querySelector('.color').textContent = data.colors;
             element.querySelector('.price').textContent = data.price;
             return element;
         }
