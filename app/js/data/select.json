@@ -2,31 +2,80 @@
     "sneakers": [
         {
             "name": "adidas",
-            "model": [
+            "models": [
                 {
-                    "add-1": "madel-1"
+                    "model": "adidas-model-1"
                 },
                 {
-                    "add-2": "madel-2"
+                    "model": "adidas-model-2"
                 }
             ]
         },
         {
-            "name": "nike"
+            "name": "nike",
+            "models": [
+                {
+                    "model": "nike-model-1"
+                },
+                {
+                    "model": "nike-model-2"
+                },
+                {
+                    "model": "nike-model-3"
+                }
+            ]
         },
         {
-            "name": "puma"
+            "name": "puma",
+            "models": [
+                {
+                    "model": "puma-model-1"
+                },
+                {
+                    "model": "puma-model-2"
+                }
+            ]
         },
         {
-            "name": "new-balance"
+            "name": "new-balance",
+            "models": [
+                {
+                    "model": "nb-model-1"
+                },
+                {
+                    "model": "nb-model-2"
+                }
+            ]
         }
     ],
     "jackets": [
         {
-            "name": "Grishko"
+            "name": "Grishko",
+            "models": [
+                {
+                    "model": "jackets-gr-model-1"
+                },
+                {
+                    "model": "jackets-gr-model-2"
+                },
+                {
+                    "model": "jackets-gr-model-3"
+                }
+            ]
         },
         {
-            "name": "Warmy"
+            "name": "Warmy",
+            "models": [
+                {
+                    "model": "Warmy-gr-model-1"
+                },
+                {
+                    "model": "Warmy-gr-model-2"
+                },
+                {
+                    "model": "Warmy-gr-model-3"
+                }
+            ]
         },
         {
             "name": "Linder"

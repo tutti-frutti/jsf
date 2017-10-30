@@ -89,18 +89,16 @@
         var container = document.querySelector('.select-choice-results');
 
         $('#select-choice').change(function() {
-            var brands = $(this).val();
-            console.log(brands);
+            var types = $(this).val();
             $.ajax({
                 type: 'GET',
                 url: 'js/data/select.json',
                 dataType: 'json',
                 success: function(data) {
-                    console.log(data[brands]);
                     $('#select-brand').empty();
-                    $('#select-brand').append('<option value="">Выбрать</option>');
-                    for (var i in data[brands]) {
-                        $('#select-brand').append('<option value="' + data[brands][i].name + '">' + data[brands][i].name + '</option>');
+                    $('#select-brand').append('<option value="">Выбрать бренд</option>');
+                    for (var i in data[types]) {
+                        $('#select-brand').append('<option value="' + data[types][i].name + '">' + data[types][i].name + '</option>');
                     }
                 },
                 error: function() {
@@ -108,6 +106,36 @@
                 }
             });
         });
+        
+        // var types = $(this).val(); -> получаем значение выбранного option
+        // data -> массив загруженных данных из json 
+        // data[types] -> массив с обращением по имени к элементам массива (sneakers, jackets, t-shirt)
+        // for (var i in data[types]) -> перебор массива
+        // $('#select-brand').append('<option value="' + data[types][i].name + '">' + data[types][i].name + '</option>');
+        // ' + data[types][i].name + ' -> записываем в каждый option name элемента массива data[types]
+
+        $('#select-brand').change(function() {
+            var brand = $(this).val(); 
+            var selectedType = $('#select-choice option:selected').val();
+            $.ajax({
+                type: 'GET',
+                url: 'js/data/select.json',
+                dataType: 'json',
+                success: function(data) {
+                    $('#select-model').empty();
+                    $('#select-model').append('<option value="">Выбрать модель</option>');
+                    for (var i in data[selectedType]) {
+                        for (var j in data[selectedType][i].models) {
+                            if (data[selectedType][i].name == brand) {
+                                $('#select-model').append('<option value="' + data[selectedType][i].models[j].model + '">' + data[selectedType][i].models[j].model + '</option>');
+                            }
+                        }
+                    }
+                }
+            });
+        });
+        
+        
 
         function renderItems(loaded) {
             var select = $('#select-choice');
