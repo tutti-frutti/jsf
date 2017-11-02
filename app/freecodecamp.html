@@ -33,8 +33,25 @@
             console.log(c);
             return c;
         }
+        console.log(reverseString("hello"));
 
-        console.log(reverseString("hello"))
+        // factorial
+        function factorialize(num) {
+            if (num === 0) {
+                return 1;
+            } else {
+                return num * factorialize(num - 1);
+            }
+        }
+        console.log(factorialize(13));
+        
+        //timer
+        function write(n){
+            for(var i = 0; i >= 0; i--){
+                console.log(n);
+            }
+        }
+        write(5);
     </script>
 </body>
 
