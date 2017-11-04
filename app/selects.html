@@ -8,10 +8,14 @@
     <link rel="stylesheet" href="css/libs.min.css">
     <link rel="stylesheet" href="css/main.css">
 
-    <title>Ajax</title>
+    <title>Selects</title>
 
     <style>
-
+        .select {
+            display: inline-block;
+            vertical-align: top;
+            width: 30%;
+        }
     </style>
 </head>
 
@@ -21,14 +25,32 @@
 
     <main class="center">
         <div class="select">
-            <label for="select-choice">Выбираем параметры</label>
+            <label for="select-choice">Тип</label>
             <select name="" id="select-choice">
                 <option value="select-option">Выбрать</option>
-                <option value="first">Вариант-1</option>
-                <option value="second">Вариант-2</option>
-                <option value="third">Вариант-3</option>
-                <option value="fourth">Вариант-4</option>
-                <option value="fifth">Вариант-5</option>
+                <option value="sneakers">Кроссовки</option>
+                <option value="jackets">Куртки</option>
+                <option value="t-shirt">Футболки</option>
+                <option value="fourth">Футболки</option>
+                <option value="fifth">Пояса</option>
+            </select>
+            <div class="select-choice-results"></div>
+        </div>
+        <!--select-->
+
+        <div class="select">
+            <label for="select-brand">Бренд</label>
+            <select name="" id="select-brand">
+                <option value="zero">Выбрать бренд</option>
+            </select>
+            <div class="select-choice-results"></div>
+        </div>
+        <!--select-->
+
+        <div class="select">
+            <label for="select-model">Модель</label>
+            <select name="" id="select-model">
+                <option value="zero">Выбрать модель</option>
             </select>
             <div class="select-choice-results"></div>
         </div>
@@ -48,7 +70,7 @@
 
                 <div class="template-block">
                     <span>Color:</span>
-                    <span class="color"></span>
+                    <span class="colors"></span>
                 </div>
 
                 <div class="template-block">
@@ -64,66 +86,62 @@
     <script src="js/libs.min.js"></script>
     <script src="js/common.js"></script>
     <script>
-        var container = document.getElementsByClassName('select-choice-results');
+        $('#select-choice').change(function () {
+            var brands = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: 'js/data/select.json',
+                dataType: 'json',
+                success: function (data) {
+                    $('#select-brand').empty();
+                    $('#select-brand').append('<option value="">Выбрать</option>');
 
-        //                function getDataSelect() {
-        //                    var xhr = new XMLHttpRequest();
-        //                    xhr.open('GET', 'js/data/select.json');
-        //                    xhr.onload = function(evt) {
-        //                        var rawData = evt.target.response;
-        //                        var loadedSelects = JSON.parse(rawData);
-        //                        console.log(loadedSelects);
-        //                    }
-        //                    xhr.send();
-        //                };
-        //
-        //                getDataSelect();
+                    for (var i = 0; i < data[brands].length; i++) {
+                        $('#select-brand').append('<option value="' + data[brands][i].name + '">' + data[brands][i].name + '</option>');
+                    }
 
-        $.ajax({
-            type: 'GET',
-            url: 'js/data/select.json',
-            dataType: 'json',
-            success: function (data) {
-                var loaded = data;
-                renderItems(loaded);
-            },
-            onerror: function () {
-                console.log('cannot get data')
-            }
+                    //                    for (var i in data[brands]) {
+                    //                        console.log(i);
+                    //                        $('#select-brand').append('<option value="' + data[brands][i].name + '">' + data[brands][i].name + '</option>');
+                    //                    }
+                },
+                error: function () {
+                    console.log('cannot get data')
+                }
+            });
         });
 
-        function renderItems(loaded) {
-            var select = $('#select-choice');
-            $(select).change(function () {
-                var options = select.val();
-                var filtered = loaded.filter(function (items, i, loaded) {
-                    var name = loaded[i].name;
-                    if (name == options) {
-                        return loaded[i].name;
-                    }
-                })
-                container.innerHTML = '';
-                filtered.forEach(function (item) {
-                    var element = getFromTemplate(item);
-                    console.log(element);
-                    container.appendChild(element);
-                });
+        //        function renderItems(loaded) {
+        //            var select = $('#select-choice');
+        //            $(select).change(function () {
+        //                var options = select.val();
+        //                var filtered = loaded.filter(function (items, i, loaded) {
+        //                var filtered = loaded.filter(function(items, i) {
+        //
+        //                    var name = loaded[i].name;
+        //                    if (name == options) {
+        //                        return loaded[i].name;
+        //                    }
+        //                })
+        //                container.innerHTML = '';
+        //                filtered.forEach(function(item) {
+        //                    var element = getFromTemplate(item);
+        //                    container.appendChild(element);
+        //                });
+        //
+        //            })
+        //        }
 
-            })
-        }
-
-        function getFromTemplate(data) {
-            var template = document.getElementById('template-select');
-//            console.log(template);
-            var element = template.content.children[0].cloneNode(true);
-//            console.log(element);
-            
-            element.querySelector('.item-name').textContent = data.name;
-            element.querySelector('.article').textContent = data.article;
-            element.querySelector('.color').textContent = data.colors;
-            element.querySelector('.price').textContent = data.price;
-            return element;
-        }
+        //        function getFromTemplate(data) {
+        //            var template = document.getElementById('template-select');
+        //            var element = template.content.children[0].cloneNode(true);
+        //
+        //                element.querySelector('.item-name').textContent = data.name;
+        //            element.querySelector('.article').textContent = data.article;
+        //            element.querySelector('.color').textContent = data.colors;
+        //            element.querySelector('.price').textContent = data.price;
+        //            return element;
+        //        }
     </script>
 </body>
 
