@@ -86,18 +86,33 @@
     <script src="js/libs.min.js"></script>
     <script src="js/common.js"></script>
     <script>
+<<<<<<< HEAD
         $('#select-choice').change(function () {
             var brands = $(this).val();
+=======
+        var container = document.querySelector('.select-choice-results');
+
+        $('#select-choice').change(function() {
+            var types = $(this).val();
+>>>>>>> a6e00308eea89328843fadf03082c23734b4dc06
             $.ajax({
                 type: 'GET',
                 url: 'js/data/select.json',
                 dataType: 'json',
+<<<<<<< HEAD
                 success: function (data) {
                     $('#select-brand').empty();
                     $('#select-brand').append('<option value="">Выбрать</option>');
 
                     for (var i = 0; i < data[brands].length; i++) {
                         $('#select-brand').append('<option value="' + data[brands][i].name + '">' + data[brands][i].name + '</option>');
+=======
+                success: function(data) {
+                    $('#select-brand').empty();
+                    $('#select-brand').append('<option value="">Выбрать бренд</option>');
+                    for (var i in data[types]) {
+                        $('#select-brand').append('<option value="' + data[types][i].name + '">' + data[types][i].name + '</option>');
+>>>>>>> a6e00308eea89328843fadf03082c23734b4dc06
                     }
 
                     //                    for (var i in data[brands]) {
@@ -110,38 +125,34 @@
                 }
             });
         });
+        
+        // var types = $(this).val(); --> получаем значение выбранного option
+        // data --> массив загруженных данных из json 
+        // data[types] --> массив с обращением по имени к элементам массива (sneakers, jackets, t-shirt)
+        // for (var i in data[types]) --> перебор массива
+        // $('#select-brand').append('<option value="' + data[types][i].name + '">' + data[types][i].name + '</option>');
+        // ' + data[types][i].name + ' --> записываем в каждый option name элемента массива data[types]
 
-        //        function renderItems(loaded) {
-        //            var select = $('#select-choice');
-        //            $(select).change(function () {
-        //                var options = select.val();
-        //                var filtered = loaded.filter(function (items, i, loaded) {
-        //                var filtered = loaded.filter(function(items, i) {
-        //
-        //                    var name = loaded[i].name;
-        //                    if (name == options) {
-        //                        return loaded[i].name;
-        //                    }
-        //                })
-        //                container.innerHTML = '';
-        //                filtered.forEach(function(item) {
-        //                    var element = getFromTemplate(item);
-        //                    container.appendChild(element);
-        //                });
-        //
-        //            })
-        //        }
-
-        //        function getFromTemplate(data) {
-        //            var template = document.getElementById('template-select');
-        //            var element = template.content.children[0].cloneNode(true);
-        //
-        //                element.querySelector('.item-name').textContent = data.name;
-        //            element.querySelector('.article').textContent = data.article;
-        //            element.querySelector('.color').textContent = data.colors;
-        //            element.querySelector('.price').textContent = data.price;
-        //            return element;
-        //        }
+        $('#select-brand').change(function() {
+            var brand = $(this).val(); 
+            var selectedType = $('#select-choice option:selected').val();
+            $.ajax({
+                type: 'GET',
+                url: 'js/data/select.json',
+                dataType: 'json',
+                success: function(data) {
+                    $('#select-model').empty();
+                    $('#select-model').append('<option value="">Выбрать модель</option>');
+                    for (var i in data[selectedType]) {
+                        for (var j in data[selectedType][i].models) {
+                            if (data[selectedType][i].name == brand) {
+                                $('#select-model').append('<option value="' + data[selectedType][i].models[j].model + '">' + data[selectedType][i].models[j].model + '</option>');
+                            }
+                        }
+                    }
+                }
+            });
+        });
     </script>
 </body>
 

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/libs.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Accordion pure js</title>
+
+    <style>
+        .center {
+            margin: 10px auto;
+        }
+
+        .acc-content {
+            display: none;
+            transition: all .3s;
+        }
+
+        .tab {
+            display: inline-block;
+            padding: 5px;
+            vertical-align: top;
+            text-align: center;
+            border: 1px solid #000;
+        }
+
+        .tab:hover {
+            cursor: pointer;
+            background: silver;
+        }
+
+        .tab.active {
+            background: silver;
+        }
+
+        .tabs-body {
+            padding: 10px;
+            margin-top: 3px;
+            border: 1px solid #000;
+        }
+
+        .tab-content {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header></header>
+
+    <main class="center">
+
+        <div class="acc-body">
+            <div class="acc-title">
+                <h3>Section 1</h3>
+            </div>
+            <div class="acc-content" id="panel-1">
+                Jennifer. Jen. Jennifer. Wake up. (Marty sits beside her on the swing. She hasn't stirred yet. He gently touches her cheek. He bends down and kisses her. Her eyes open and she smiles.) Marty. (She sits up and embraces him, and she changes her expression.) I had the worst nightmare. (In Town.) (Marty and Jennifer are sitting in the truck, waiting for a traffic light. No other cars are around.)
+            </div>
+
+            <div class="acc-title">
+                <h3>Section 2</h3>
+            </div>
+            <div class="acc-content" id="panel-2">
+                (1955 Doc appears. He makes some adjustments to his "weather experiment." Neither Doc sees the other.) (v.o) My other self? (w.t) Yes! Remember, your mother is at that exact same dance with you! Yeah! (v.o) Yeah, this could get heavy Doc. (mutters to himself) Heavy, heavy. (w.t) Whatever happens, you must not let your other self see you. The consequences could be disastrous.
+            </div>
+
+            <div class="acc-title">
+                <h3>Section 3</h3>
+            </div>
+            <div class="acc-content" id="panel-3">
+                Jennifer. Jen. Jennifer. Wake up. (Marty sits beside her on the swing. She hasn't stirred yet. He gently touches her cheek. He bends down and kisses her. Her eyes open and she smiles.) Marty. (She sits up and embraces him, and she changes her expression.) I had the worst nightmare. (In Town.) (Marty and Jennifer are sitting in the truck, waiting for a traffic light. No other cars are around.)Unless you've got power! (The gang laugh. Griff turns to his car. He gets a box out of it. The gang all walk down the street and stop. Griff presses a button on the box and a Pit Bull hoverboard pops out. This board works on jet power.) Hook on! (The gang connect their hoverboards to Griff's. Marty is trying to move, he's pushing his foot in the water as if trying to start a skateboard.) Batter up! (The board blasts off. Griff and his gang are on the way! Marty tries pushing the board again, but it doesn't work. Griff is getting closer. Then, just as Griff would have got Marty, Marty jumps off the board and lands in the water. Griff's board catches on a rock and Griff and his gang all fall off. They fly through the air and smash through the front window of Courthouse Mall. Marty resurfaces.) Holy shit!
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="js/libs.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        window.onload = function() {
+            var hiddenContent = document.getElementsByClassName('acc-content');
+            var title = document.querySelectorAll('.acc-title');
+
+            for (var i = 0; i < title.length; i++) {
+                title[i].addEventListener('click', showContent);
+
+                function showContent(e) {
+                    for (var i = 0; i < hiddenContent.length; i++) {
+                        hiddenContent[i].style.display = 'none';
+                    }
+                    if (this.nextElementSibling.style.display == 'block') {
+                        this.nextElementSibling.style.display = 'none';
+                    } else {
+                        this.nextElementSibling.style.display = 'block';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

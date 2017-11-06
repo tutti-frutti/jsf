@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/libs.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Scroll</title>
+    <style>
+        .main-content {
+            text-align: center;
+        }
+        
+        .header {
+            height: 250px;
+            background: rgba(0, 0, 0, .8);
+        }
+        
+        .body {
+            height: 100vh;
+            background: silver;
+        }
+        
+        .footer {
+            height: 300px;
+            background: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <main class="main-content">
+        <div class="header">this is header!</div>
+        <div class="body">this is content!</div>
+        <div class="footer">this is footer!</div>
+    </main>
+
+    <script src="js/libs.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        window.onload = function () {
+            var body = document.querySelector('.body');
+            window.addEventListener('scroll', function (evt) {
+                var footerOffset = document.querySelector('.footer').getBoundingClientRect();
+                var vieportSize = window.innerHeight;
+                console.log(vieportSize);
+
+                if (footerOffset.bottom - window.innerHeight <= footerOffset.height) {
+                    body.style.background = 'blue';
+                } else {
+                    body.style.background = 'gray';
+                }
+            })
+        }
+    </script>
+
+</body>
+
+</html>
