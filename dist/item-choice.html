@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/libs.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Gulp Less</title>
+</head>
+
+<body>
+
+    <header class="header">
+
+    </header>
+
+    <main>
+        <div class="item-choice">
+            <div class="item-choice__wrapper">
+                <div class="item-choice__left">test</div>
+                <div class="item-choice__right">
+                    <form action="">
+                        <h2>Выбрать параметры</h2>
+                        <div class="item-choice__select">
+                            <label for="">Сделать выбор</label>
+                            <select id="u-select">
+                                <option value="zero">Выберите опцию</option>
+                                <option value="first">Вариант-1</option>
+                                <option value="second">Вариант-2</option>
+                                <option value="third">Вариант-3</option>
+                                <option value="fourth">Вариант-4</option>
+                                <option value="fifth">Вариант-5</option>
+                            </select>
+                        </div>
+                        <div class="item-choice__result results"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <template id="data-template" class="template">
+            <article>
+                <div class="template__block">
+                    <span>Item name: </span>
+                    <span class="item-name"></span>
+                </div>
+                <div class="template__block">
+                    <span>SKU: </span>
+                    <span class="sku"></span>
+                </div>
+                <div class="template__block">
+                    <span>Height: </span>
+                    <span class="height"></span>
+                </div>
+                <div class="template__block">
+                    <span>Colors: </span>
+                    <span class="colors"></span>
+                </div>
+                <div class="template__block">
+                    <span>Price: </span>
+                    <span class="price"></span>
+                </div>
+            </article>
+        </template>
+    </main>
+
+    <footer></footer>
+
+    <script src="js/libs.min.js"></script>
+<!--    <script src="js/data/items.js"></script>-->
+    <script src="js/item-choice.js"></script>
+    <script src="js/common.js"></script>
+</body>
+
+</html>

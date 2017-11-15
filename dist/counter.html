@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/libs.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Counter animation</title>
+
+    <style>
+        .first {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            margin-bottom: 100px;
+            height: 100vh;
+        }
+        
+        .first p {
+            margin: auto;
+        }
+        
+        .counter {
+            text-align: center;
+            font-size: 0;
+        }
+        
+        .counter-block {
+            display: inline-block;
+            vertical-align: top;
+            width: 23%;
+            padding: 10px;
+            margin: 15px 5px;
+            border-radius: 5px;
+            background: #4ad1e5;
+        }
+        
+        .count-number {
+            padding: 10px 0;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .count-text {
+            font-size: 16px;
+        }
+        
+        .bottom {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            margin-top: 250px;
+        }
+        
+        .bottom p {
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header"></header>
+
+    <main class="center">
+
+        <div class="first">
+            <p>100vh</p>
+        </div>
+
+        <div class="counter">
+            <div class="counter-block">
+                <h2 class="count-number">12345</h2>
+                <p class="count-text">Let's go, boys!</p>
+            </div>
+
+            <div class="counter-block">
+                <h2 class="count-number">12378945</h2>
+                <p class="count-text">Let these sissies have their party!</p>
+            </div>
+
+            <div class="counter-block">
+                <h2 class="count-number">97625512</h2>
+                <p class="count-text">They quickly leave</p>
+            </div>
+
+            <div class="counter-block">
+                <h2 class="count-number">126375445</h2>
+                <p class="count-text">Let's go, boys!</p>
+            </div>
+        </div>
+        <!--./counter-->
+
+        <div class="bottom">
+            <p>bottom</p>
+        </div>
+
+    </main>
+
+    <footer></footer>
+
+    <script src="js/libs.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            function animNumbs() {
+                $('.count-number').each(function () {
+                    $(this).prop('Counter', 0).animate({
+                        Counter: $(this).text()
+                    }, {
+                        duration: 2000,
+                        easing: 'swing',
+                        step: function (now) {
+                            $(this).text(Math.ceil(now))
+                        }
+                    });
+                });
+            };
+            
+            
+            var a = 0;
+
+            $(window).scroll(function () {
+                var oTop = $('.counter').offset().top - window.innerHeight;
+                if (a == 0 && $(window).scrollTop() > oTop) {
+                    a = 1;
+                    animNumbs();
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/libs.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Gulp Less</title>
+</head>
+
+<body>
+    
+    <style>
+        .pictures__photo, .pictures {
+            max-width: 320px;
+            margin: 30px auto;
+            overflow: hidden;
+            border: 1px solid gray;
+        }
+        .pictures {
+            border: none;
+        }
+        .pictures__links ul li {
+            display: inline-block;
+            vertical-align: top;
+            width: 30%;
+        }
+    </style>
+    <header class="header"></header>
+
+    <main>
+
+        <div class="pictures">
+            <div class="pictures__links">
+                <ul>
+                    <li data-src="img/water1.jpg">image-1</li>
+                    <li data-src="img/water2.jpg">image-2</li>
+                    <li data-src="img/water3.jpg">image-3</li>
+                </ul>
+            </div>
+            <div class="pictures__photo">
+                <div class="pictures__img"><img src="img/water1.jpg" alt=""></div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer></footer>
+
+    <script src="js/libs.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        $(function(){
+           $('.pictures__links li').hover(function(){
+               var src = $(this).data('src');
+               $('.pictures__img img').attr('src', src);
+           }) 
+        });
+    </script>
+</body>
+
+</html>

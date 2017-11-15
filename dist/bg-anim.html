@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/libs.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Animated background image</title>
+
+    <style>
+        .bg-block {
+            margin: 0 auto;
+            width: 960px;
+            height: 300px;
+            background: url(../img/bg-anim.jpeg) 0 0 no-repeat;
+        }
+
+        .bg-block p {
+            position: relative;
+            display: inline-block;
+            padding: 20px 20px 20px 50px;
+            top: 180px;
+            left: 0;
+            text-transform: uppercase;
+            color: #fff;
+            background: rgba(255, 255, 255, .4);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header"></header>
+
+    <main class="center">
+
+        <div class="bg-block">
+            <p>Animated background</p>
+        </div>
+        <a href="https://www.youtube.com/watch?v=HorbxXIYlCc">Видеоурок</a>
+        <!--./bg-block-->
+
+    </main>
+
+    <footer></footer>
+
+    <script src="js/libs.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            var x = 0;
+            var y = 0;
+            var bgBlock = $('.bg-block');
+
+            bgBlock.css('backgroundPosition', x + 'px' + ' ' + y + 'px');
+
+            var animateGoStop = window.setInterval(function() {
+                bgBlock.css('backgroundPosition', x + 'px' + ' ' + y + 'px');
+                if (y < -300) {
+                    window.clearInterval(animateGoStop);
+                }
+                y--;
+            }, 90);
+        });
+
+
+        // BG BOTTOM-TOP
+
+        //        $(document).ready(function () {
+        //            var x = 0;
+        //            var y = 0;
+        //            var banner = $(".bg-block");
+        //
+        //            banner.css('backgroundPosition', x + 'px' + ' ' + y + 'px');
+        //
+        //            function subir() {
+        //                y += .2;
+        //                banner.css('backgroundPosition', x + 'px' + ' ' + y + 'px');
+        //                if (y > -1) {
+        //                    clearInterval(interv2);
+        //                    interv1 = window.setInterval(bajar, 1);
+        //                }
+        //            }
+        //
+        //            function bajar() {
+        //                y -= .2;
+        //                banner.css('backgroundPosition', x + 'px' + ' ' + y + 'px');
+        //                if (y < -10) {
+        //                    clearInterval(interv1);
+        //                    interv2 = window.setInterval(subir, 1);
+        //                }
+        //            }
+        //
+        //            var interv1 = window.setInterval(bajar, 1);
+        //        });
+    </script>
+</body>
+
+</html>

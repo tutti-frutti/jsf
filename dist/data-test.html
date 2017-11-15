@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/libs.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Gulp Less</title>
+</head>
+
+<body>
+
+    <header class="header"></header>
+
+    <main>
+
+        <div class="data-cont"></div>
+        <p>
+           Сотрудник: <span></span>,
+           возраст  <span></span> лет, 
+           телефон: <span></span>
+        </p>
+        <button class="get">Получить данные</button>
+        <button class="reset">Удалить данные</button>
+
+    </main>
+
+    <footer></footer>
+
+    <script src="js/libs.min.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        $(function(){
+            var dF = $('.data-cont');
+            console.log(dF);
+            $('.data-cont').data('employee',{ "name": "Иван", "age": 27, "phone": "+7(903)217-77-77" });
+            $('button.get').click(function(){
+                $('p span:eq(0)').text($(dF).data('employee').name);
+                $('p span:eq(1)').text($(dF).data('employee').age);
+                $('p span:eq(2)').text($(dF).data('employee').phone);
+            });
+            $('button.reset').click(function(){
+                $('p span').empty();
+//                $(dF).removeData();
+            })
+        })
+    </script>
+</body>
+
+</html>

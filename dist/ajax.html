@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/libs.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Ajax</title>
+
+    <style>
+    </style>
+</head>
+
+<body>
+
+    <header class="header"></header>
+
+    <main class="center">
+        <button id="click-on-it">click-on-it!</button>
+        <p></p>
+    </main>
+
+    <footer></footer>
+
+    <script src="js/libs.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('button').click(function() {
+                $('p').empty();
+                $.ajax({
+                    type: 'GET',
+                    url: 'js/test-ajax/test-for-ajax.html',
+                    success: function(data) {
+                        $('p').append(data);
+                    },
+                    error: function(){
+                        console.log('cannot find data');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

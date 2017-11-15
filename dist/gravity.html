@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/libs.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Gulp Less</title>
+    <style>
+        .ltrs {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header"></header>
+
+    <main>
+
+        <div class="">
+            <span class="ltrs">g</span>
+            <span class="ltrs">r</span>
+            <span class="ltrs">a</span>
+            <span class="ltrs">v</span>
+            <span class="ltrs">i</span>
+            <span class="ltrs">t</span>
+            <span class="ltrs">y</span>
+        </div>
+
+    </main>
+
+    <footer></footer>
+
+    <script src="js/libs.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        window.onload = function() {
+//            var all = $('.ltrs').hide();
+            var all = $('.ltrs');
+
+            // 1st variant
+//            function showAll() {
+//                all.each(function(i) {
+//                    $(this).delay(750 * i).fadeIn();
+//                });
+//            }
+//            showAll();
+            
+            // 2nd variant
+            for(var i = 0; i < all.length; i++){
+                $(all[i]).delay(1000*i).fadeIn(1000);
+            }
+        };
+    </script>
+</body>
+
+</html>

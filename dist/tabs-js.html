@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/libs.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Tabs pure js</title>
+
+    <style>
+        .center {
+            margin: 10px auto;
+        }
+
+        .tab {
+            display: inline-block;
+            padding: 5px;
+            vertical-align: top;
+            text-align: center;
+            border: 1px solid #000;
+        }
+
+        .tab:hover {
+            cursor: pointer;
+            background: silver;
+        }
+
+        .tab.active {
+            background: silver;
+        }
+        
+        .tabs-body {
+            padding: 10px;
+            margin-top: 3px;
+            border: 1px solid #000;
+        }
+
+        .tab-content {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header></header>
+
+    <main class="center">
+        <div class="tabs-header">
+            <div class="tab" data-tab="0">Один</div>
+            <div class="tab" data-tab="1">Два</div>
+            <div class="tab" data-tab="2">Три</div>
+        </div>
+
+        <div class="tabs-body">
+            <div class="tab-content" style="display: block">Jennifer. Jen. Jennifer. Wake up. (Marty sits beside her on the swing. She hasn't stirred yet. He gently touches her cheek. He bends down and kisses her. Her eyes open and she smiles.) Marty. (She sits up and embraces him, and she changes her expression.) I had the worst nightmare. (In Town.) (Marty and Jennifer are sitting in the truck, waiting for a traffic light. No other cars are around.)</div>
+            <div class="tab-content">Who the hell is John F. Kennedy? Mother, with Marty's parents out of town, don't you think he oughtta spend the night? After all, Dad almost killed him with the car. That's true, Marty, I think you should spend the night. I think you're our responsibility. Well gee, I don't know. And he could sleep in my room. (she grabs Marty's thigh under the table.)</div>
+            <div class="tab-content">(o.s) I think the real reason your mother married him was because she felt sorry for him. Mom? (o.s) Such a sweet girl. (Living Room) (Jennifer sees her future son sit down in front of the TV. A painting is on display.)</div>
+        </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="js/libs.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        window.onload = function() {    
+            document.querySelector('.tabs-header').addEventListener('click', changeTabs);
+
+            function changeTabs(event) {
+                if (event.target.className == 'tab') {
+                    var dataTab = event.target.getAttribute('data-tab');
+                    var tabContent = document.getElementsByClassName('tab-content');
+                    
+                    var tabs = document.getElementsByClassName('tab');
+                    for(var i = 0; i < tabs.length; i++){
+                        tabs[i].classList.remove('active');
+                    }
+                    event.target.classList.add('active');
+                    
+                    for(var i = 0; i < tabContent.length; i++) {
+                        if(dataTab == i) {
+                            tabContent[i].style.display='block';
+                        } else {
+                            tabContent[i].style.display='none';
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
