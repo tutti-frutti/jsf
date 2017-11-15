@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/libs.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Tabs pure js</title>
+
+    <style>
+        .center {
+            margin: 10px auto;
+        }
+        
+        .navigation.sticky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        nav ul {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            background: #607d8b;
+        }
+        
+        nav ul li a {
+            display: block;
+            padding: 5px 10px;
+            color: #000;
+        }
+        nav ul li a.active {
+            color: goldenrod;
+        }
+        
+        .section {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            padding: 25px;
+            margin: 10px auto;
+            height: 500px;
+            max-width: 780px;
+            width: 100%;
+            color: #000;
+            font-weight: bold;
+        }
+        
+        .section p {
+            margin: auto;
+        }
+        
+        .section:nth-child(even) {
+            background: #8bc34a;
+        }
+        
+        .section:nth-child(odd) {
+            background: #009688;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header></header>
+
+    <main class="center">
+        <nav class="navigation">
+            <ul>
+                <li><a href="#" data-target="section-1">First Section</a></li>
+                <li><a href="#" data-target="section-2">Second Section</a></li>
+                <li><a href="#" data-target="section-3">Third Section</a></li>
+                <li><a href="#" data-target="section-4">Fourth Section</a></li>
+                <li><a href="#" data-target="section-5">Fifth Section</a></li>
+            </ul>
+        </nav>
+
+        <div class="wrapper">
+            <div class="section" id="section-1" data-place="section-1">
+                <p>First Section</p>
+            </div>
+            <div class="section" id="section-2" data-place="section-2">
+                <p>Second Section</p>
+            </div>
+            <div class="section" id="section-3" data-place="section-3">
+                <p>Third Section</p>
+            </div>
+            <div class="section" id="section-4" data-place="section-4">
+                <p>Fourth Section</p>
+            </div>
+            <div class="section" id="section-5" data-place="section-5">
+                <p>Fifth Section</p>
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="js/libs.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        $(document).ready(function () {
+        // sticky
+        //            $(window).scroll(function () {
+        //                var winTop = $(window).scrollTop();
+        //                if (winTop >= 30) {
+        //                    $(".navigation").addClass("sticky");
+        //                } else {
+        //                    $(".navigation").removeClass("sticky");
+        //                }
+        //            });
+        //
+        $('nav a').on('click', function () {
+            var scrollTarget = $(this).attr('data-target');
+            var scrollPlace = $('.section[data-place="' + scrollTarget + '"]').offset().top - 35;
+
+            $('body, html').animate({
+                scrollTop: scrollPlace
+            }, 500);
+            return false;
+        });
+        //
+        $(window).scroll(function () {
+            var windscroll = $(window).scrollTop();
+            if (windscroll >= 30) {
+                $('.navigation').addClass('sticky');
+                $('.section').each(function (i) {
+                    if ($(this).position().top <= windscroll + 80) {
+                        $('.navigation a.active').removeClass('active');
+                        $('.navigation a').eq(i).addClass('active');
+                    }
+                });
+            } else {
+
+                $('.navigation').removeClass('sticky');
+                $('.navigation a.active').removeClass('active');
+                $('.navigation a:first').addClass('active');
+            }
+
+        }).scroll();
+        })
+//        });
+    </script>
+</body>
+
+</html>
